@@ -26,11 +26,19 @@ export default function App() {
   };
 
   const updateList = (list) => {
-    setLists(
+    // setLists(
+    //   lists.map((item) => {
+    //     return item.id === list.id ? list : item;
+    //   })
+    // );
+    console.log(
       lists.map((item) => {
-        return item.key === list.key ? list : item;
+        return item.id === list.id ? list : item;
       })
     );
+    console.log("*********************************************************");
+    console.log(list);
+    console.log("*********************************************************");
   };
 
   return (
@@ -39,7 +47,6 @@ export default function App() {
         animationType="slide"
         visible={visible}
         onRequestClose={() => setVisible(false)}
-        statusBarTranslucent={true}
       >
         <AddListModal closeModal={() => setVisible(false)} addList={addList} />
       </Modal>
@@ -73,6 +80,7 @@ export default function App() {
           )}
         />
       </View>
+      {console.log(lists)}
       <StatusBar style="auto" />
     </View>
   );

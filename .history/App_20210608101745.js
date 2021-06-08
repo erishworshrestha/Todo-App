@@ -22,24 +22,15 @@ export default function App() {
   const [lists, setLists] = useState(data);
 
   const addList = (list) => {
-    setLists([...lists, { ...list, todos: [] }]);
+    setLists({ lists: [...lists, { ...list, todos: [] }] });
   };
-
-  const updateList = (list) => {
-    setLists(
-      lists.map((item) => {
-        return item.key === list.key ? list : item;
-      })
-    );
-  };
-
+  const updateList = (list) => {};
   return (
     <View style={styles.container}>
       <Modal
         animationType="slide"
         visible={visible}
         onRequestClose={() => setVisible(false)}
-        statusBarTranslucent={true}
       >
         <AddListModal closeModal={() => setVisible(false)} addList={addList} />
       </Modal>
@@ -67,10 +58,7 @@ export default function App() {
           keyExtractor={(item) => item.name}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          keyboardShouldPersistTaps="always"
-          renderItem={({ item }) => (
-            <TodoList list={item} updateList={updateList} />
-          )}
+          renderItem={({ item }) => <TodoList list={item} />}
         />
       </View>
       <StatusBar style="auto" />

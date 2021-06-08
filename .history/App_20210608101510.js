@@ -19,27 +19,16 @@ const { width, height } = Dimensions.get("window");
 
 export default function App() {
   const [visible, setVisible] = useState(false);
-  const [lists, setLists] = useState(data);
+  const [data_, setData] = useState(data);
 
-  const addList = (list) => {
-    setLists([...lists, { ...list, todos: [] }]);
-  };
-
-  const updateList = (list) => {
-    setLists(
-      lists.map((item) => {
-        return item.key === list.key ? list : item;
-      })
-    );
-  };
-
+  const addList = (list) => {};
+  const updateList = (list) => {};
   return (
     <View style={styles.container}>
       <Modal
         animationType="slide"
         visible={visible}
         onRequestClose={() => setVisible(false)}
-        statusBarTranslucent={true}
       >
         <AddListModal closeModal={() => setVisible(false)} addList={addList} />
       </Modal>
@@ -63,14 +52,11 @@ export default function App() {
       </View>
       <View style={styles.flatList}>
         <FlatList
-          data={lists}
+          data={data_}
           keyExtractor={(item) => item.name}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          keyboardShouldPersistTaps="always"
-          renderItem={({ item }) => (
-            <TodoList list={item} updateList={updateList} />
-          )}
+          renderItem={({ item }) => <TodoList list={item} />}
         />
       </View>
       <StatusBar style="auto" />

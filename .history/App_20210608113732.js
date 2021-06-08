@@ -39,7 +39,6 @@ export default function App() {
         animationType="slide"
         visible={visible}
         onRequestClose={() => setVisible(false)}
-        statusBarTranslucent={true}
       >
         <AddListModal closeModal={() => setVisible(false)} addList={addList} />
       </Modal>

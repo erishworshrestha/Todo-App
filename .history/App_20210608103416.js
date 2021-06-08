@@ -28,7 +28,7 @@ export default function App() {
   const updateList = (list) => {
     setLists(
       lists.map((item) => {
-        return item.key === list.key ? list : item;
+        return item.id === list.id ? list : item;
       })
     );
   };
@@ -39,7 +39,6 @@ export default function App() {
         animationType="slide"
         visible={visible}
         onRequestClose={() => setVisible(false)}
-        statusBarTranslucent={true}
       >
         <AddListModal closeModal={() => setVisible(false)} addList={addList} />
       </Modal>
@@ -67,7 +66,6 @@ export default function App() {
           keyExtractor={(item) => item.name}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          keyboardShouldPersistTaps="always"
           renderItem={({ item }) => (
             <TodoList list={item} updateList={updateList} />
           )}

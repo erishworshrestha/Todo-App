@@ -39,8 +39,11 @@ export default function App() {
         animationType="slide"
         visible={visible}
         onRequestClose={() => setVisible(false)}
-        statusBarTranslucent={true}
+        backdropColor="transparent"
+        transparent={false}
+        style={{ flex: 1 }}
       >
+        <StatusBar style="dark" />
         <AddListModal closeModal={() => setVisible(false)} addList={addList} />
       </Modal>
       <View style={{ flexDirection: "row" }}>
